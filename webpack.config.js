@@ -33,5 +33,4 @@ var config = {
     watch: true
 }
 
-
 module.exports = config;
