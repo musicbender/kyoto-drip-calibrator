@@ -37,7 +37,7 @@ var Sound = React.createClass({
         this.props.playing = false;
     },
     
-    handleStartStop: function () {
+    beep: function () {
         var playing = this.props.playing;
         
         if (playing) {
@@ -50,7 +50,7 @@ var Sound = React.createClass({
     
     render: function () {
         return (
-            <StartButton className="start-btn-container" onClick={this.handleStartStop} />
+            <StartButton className="start-btn-container" onClick={this.beep} />
         )
     }
 })

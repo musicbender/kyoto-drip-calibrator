@@ -24,7 +24,7 @@ var App = React.createClass({
     
     render: function () {
         return (
-            <Sound audioContext={this.audioContext} dripRate={this.state.dripRate} playing={this.state.playing} />
+            <Sound audioContext={this.state.audioContext} dripRate={this.state.dripRate} playing={this.state.playing} />
         )
     }
 });

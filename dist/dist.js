@@ -21480,7 +21480,7 @@
 	    },
 
 	    render: function render() {
-	        return _react2.default.createElement(_sound2.default, { audioContext: this.audioContext, dripRate: this.state.dripRate, playing: this.state.playing });
+	        return _react2.default.createElement(_sound2.default, { audioContext: this.state.audioContext, dripRate: this.state.dripRate, playing: this.state.playing });
 	    }
 	});
 
@@ -21544,7 +21544,7 @@
 	        this.props.playing = false;
 	    },
 
-	    handleStartStop: function handleStartStop() {
+	    beep: function beep() {
 	        var playing = this.props.playing;
 
 	        if (playing) {
@@ -21555,7 +21555,7 @@
 	    },
 
 	    render: function render() {
-	        return _react2.default.createElement(_startButton2.default, { className: 'start-btn-container', onClick: this.handleStartStop });
+	        return _react2.default.createElement(_startButton2.default, { className: 'start-btn-container', onClick: this.beep });
 	    }
 	});
 
@@ -21580,10 +21580,11 @@
 	var StartButton = _react2.default.createClass({
 	    displayName: "StartButton",
 
+
 	    render: function render() {
 	        return _react2.default.createElement(
 	            "div",
-	            { className: "start-btn" },
+	            { className: "start-btn", onClick: this.props.onClick },
 	            "Start"
 	        );
 	    }
