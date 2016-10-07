@@ -1,7 +1,17 @@
+
+
+/*******Color*******/
+
 $black: rgb(60,60,60);
 $red: rgb(150,45,45);
 $offwhite: rgb(240,240,240);
 $grey: rgb(150,150,150);
 
+
+/*******Font*******/
+
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+
 $h1-size: 3em;
 $p-size: 2em;
+$font: 'Roboto', sans-serif;

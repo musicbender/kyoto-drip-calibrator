@@ -59,11 +59,15 @@
 
 	var _reactDom = __webpack_require__(35);
 
-	var _components = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _App = __webpack_require__(173);
+
+	var _App2 = _interopRequireDefault(_App);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	(0, _reactDom.render)(_react2.default.createElement(_components.App, null), document.getElementById('app'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('app'));
 
 /***/ },
 /* 2 */
@@ -21431,6 +21435,161 @@
 
 	module.exports = ReactDOMNullInputValuePropHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _sound = __webpack_require__(174);
+
+	var _sound2 = _interopRequireDefault(_sound);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var App = _react2.default.createClass({
+	    displayName: 'App',
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            audioContext: null,
+	            playing: false,
+	            dripRate: 45
+	        };
+	    },
+
+	    componentDidMount: function componentDidMount() {
+	        var ctx = new (window.AudioContext || window.webkitAudioContext)();
+
+	        this.handleAudioContextUpdate(ctx);
+	    },
+
+	    handleAudioContextUpdate: function handleAudioContextUpdate(ctx) {
+	        this.setState({
+	            audioContext: ctx
+	        });
+	    },
+
+	    render: function render() {
+	        return _react2.default.createElement(_sound2.default, { audioContext: this.audioContext, dripRate: this.state.dripRate, playing: this.state.playing });
+	    }
+	});
+
+	exports.default = App;
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _startButton = __webpack_require__(175);
+
+	var _startButton2 = _interopRequireDefault(_startButton);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Sound = _react2.default.createClass({
+	    displayName: 'Sound',
+
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            buttonShow: 'play',
+	            oscillator: null
+	        };
+	    },
+
+	    start: function start() {
+	        this.setState({
+	            buttonShow: 'pause',
+	            oscillator: this.props.audioContext.createOscillator()
+	        });
+
+	        var ctx = this.props.audioContext,
+	            osc = this.state.oscillator;
+
+	        osc.type = 'sine';
+	        osc.frequency.value = 1080;
+	        gain = ctx.createGain();
+	        gain.gain.value = 1;
+	        osc.connect(gain);
+	        gain.connect(ctx.destination);
+	        osc.start();
+	        this.props.playing = true;
+	    },
+
+	    stop: function stop() {
+	        var osc = this.state.oscillator;
+
+	        osc.stop();
+	        osc.disconnect();
+	        this.props.playing = false;
+	    },
+
+	    handleStartStop: function handleStartStop() {
+	        var playing = this.props.playing;
+
+	        if (playing) {
+	            this.stop();
+	        } else {
+	            this.start();
+	        }
+	    },
+
+	    render: function render() {
+	        return _react2.default.createElement(_startButton2.default, { className: 'start-btn-container', onClick: this.handleStartStop });
+	    }
+	});
+
+	exports.default = Sound;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var StartButton = _react2.default.createClass({
+	    displayName: "StartButton",
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            "div",
+	            { className: "start-btn" },
+	            "Start"
+	        );
+	    }
+	});
+
+	exports.default = StartButton;
 
 /***/ }
 /******/ ]);
