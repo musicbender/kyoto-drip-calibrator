@@ -1,8 +1,9 @@
 {
-  "name": "github-battle",
+  "name": "kyoto drip calibrator",
   "version": "1.0.0",
-  "description": "This project is based upon [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate) and adds more structure for SCSS and JavaScript files, includes build tasks and a whole lot more.",
+  "description": "A rhythmic drip calibration calculator for your kyoto slow drip cold brew tower.",
   "main": "index.js",
+  "repository": "git@github.com:musicbender/kyoto-drip-calibrator.git",
   "scripts": {
     "dev": "webpack",
     "start": "webpack-dev-server --inline --hot",
@@ -11,7 +12,7 @@
   "author": "Pat",
   "license": "ISC",
   "dependencies": {
-    "material-ui": "^0.16.0",
+    "material-ui": "^0.16.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
