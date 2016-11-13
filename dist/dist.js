@@ -21479,8 +21479,14 @@
 	        });
 	    },
 
+	    changePlaying: function changePlaying(state) {
+	        this.setState({
+	            playing: state
+	        });
+	    },
+
 	    render: function render() {
-	        return _react2.default.createElement(_sound2.default, { audioContext: this.state.audioContext, dripRate: this.state.dripRate, playing: this.state.playing });
+	        return _react2.default.createElement(_sound2.default, { audioContext: this.state.audioContext, dripRate: this.state.dripRate, playing: this.state.playing, changePlaying: this.changePlaying });
 	    }
 	});
 
@@ -21517,31 +21523,56 @@
 	        };
 	    },
 
-	    start: function start() {
+	    getDefaultProps: function getDefaultProps() {
+	        return {
+	            audioContext: null,
+	            playing: false,
+	            dripRate: 45
+	        };
+	    },
+
+	    handleButtonState: function handleButtonState(on) {
+	        if (on) {
+	            this.setState({ buttonShow: 'pause' });
+	        } else {
+	            this.setState({ buttonShow: 'play' });
+	        }
+	    },
+
+	    mountOscillator: function mountOscillator() {
 	        this.setState({
-	            buttonShow: 'pause',
 	            oscillator: this.props.audioContext.createOscillator()
 	        });
+	    },
+
+	    start: function start() {
+	        this.mountOscillator();
+	        this.handleButtonState(true);
 
 	        var ctx = this.props.audioContext,
 	            osc = this.state.oscillator;
 
+	        console.log('DEBUG: ' + this.state.oscillator);
+	        console.log('DEBUG: ' + this.props.playing);
+
 	        osc.type = 'sine';
 	        osc.frequency.value = 1080;
-	        gain = ctx.createGain();
+	        var gain = ctx.createGain();
 	        gain.gain.value = 1;
 	        osc.connect(gain);
 	        gain.connect(ctx.destination);
 	        osc.start();
-	        this.props.playing = true;
+	        this.props.changePlaying(true);
 	    },
 
 	    stop: function stop() {
+	        this.handleButtonState(false);
+
 	        var osc = this.state.oscillator;
 
 	        osc.stop();
 	        osc.disconnect();
-	        this.props.playing = false;
+	        this.props.changePlaying(false);
 	    },
 
 	    beep: function beep() {
@@ -21549,8 +21580,10 @@
 
 	        if (playing) {
 	            this.stop();
+	            console.log('DEBUG2: ' + this.state.oscillator);
 	        } else {
 	            this.start();
+	            console.log('DEBUG2: ' + this.state.oscillator);
 	        }
 	    },
 

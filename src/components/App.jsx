@@ -22,9 +22,15 @@ var App = React.createClass({
         });
     },
     
+    changePlaying: function (state) {
+        this.setState({
+            playing: state
+        })
+    },
+    
     render: function () {
         return (
-            <Sound audioContext={this.state.audioContext} dripRate={this.state.dripRate} playing={this.state.playing} />
+            <Sound audioContext={this.state.audioContext} dripRate={this.state.dripRate} playing={this.state.playing} changePlaying={this.changePlaying} />
         )
     }
 });

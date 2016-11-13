@@ -10,31 +10,57 @@ var Sound = React.createClass({
         }
     },
     
-    start: function () {
+    getDefaultProps: function () {
+        return {
+            audioContext: null,
+            playing: false,
+            dripRate: 45
+        }
+    },
+    
+    handleButtonState: function (on) {
+        if (on) {
+            this.setState({ buttonShow: 'pause'});
+        } else {
+            this.setState({ buttonShow: 'play' });
+        }
+        
+    },
+    
+    mountOscillator: function () {
         this.setState({
-            buttonShow: 'pause',
             oscillator: this.props.audioContext.createOscillator()
         })
+    },
     
+    start: function () {
+        this.mountOscillator();
+        this.handleButtonState(true);
+        
         var ctx = this.props.audioContext,
             osc = this.state.oscillator;
         
+        console.log('DEBUG: ' + this.state.oscillator);
+        console.log('DEBUG: ' + this.props.playing);
+        
         osc.type = 'sine';
         osc.frequency.value = 1080;
-        gain = ctx.createGain();
+        var gain = ctx.createGain();
         gain.gain.value = 1;
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start();
-        this.props.playing = true;
+        this.props.changePlaying(true);
     },
     
     stop: function () {
+        this.handleButtonState(false);
+        
         var osc = this.state.oscillator;
         
         osc.stop();
         osc.disconnect();
-        this.props.playing = false;
+        this.props.changePlaying(false);
     },
     
     beep: function () {
@@ -42,8 +68,10 @@ var Sound = React.createClass({
         
         if (playing) {
             this.stop();
+            console.log('DEBUG2: ' + this.state.oscillator);
         } else {
             this.start();
+            console.log('DEBUG2: ' + this.state.oscillator);
         }
         
     },
