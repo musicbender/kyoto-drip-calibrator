@@ -10,7 +10,7 @@ import recuers from './reducers';
 const soundsData = { tickSound: './audio/tick.mp3' }
 const loadedSoundsMiddleware = soundsMiddleware(soundsData);
 const middleware = [ReduxPromise, loadedSoundsMiddleware];
-const createStoreWithMiddleWare = applyMiddleware(...middleware)(createStore);
+const createStoreWithMiddleWare = applyMiddleware(ReduxPromise, loadedSoundsMiddleware)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>

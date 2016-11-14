@@ -13,7 +13,7 @@ class App extends Component {
       <MuiThemeProvider>
         <div>
           <PlaybackControls />
-          <Slider />
+          {/*}<Slider />*/}
         </div>
       </MuiThemeProvider>
     )
