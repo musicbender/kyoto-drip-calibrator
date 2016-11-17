@@ -20,10 +20,16 @@ class PlaybackControls extends Component {
   }
 
   handleClick() {
+    console.log(this.props);
+
     if (this.props.playing) {
       this.props.soundOff();
-    } else {
+      console.log("SOUND OFF");
+    } else if (!this.props.playing) {
       this.props.soundOn();
+      console.log("SOUND ON");
+    } else {
+      console.log("ERROR: HANDLE CLICK NOT WORKING");
     }
   }
 
@@ -31,7 +37,7 @@ class PlaybackControls extends Component {
     return (
       <div>
         <div>{ this.handleTemp() }</div>
-        <button onClick={this.handleClick()}>Click Here</button>
+        <button onClick={() => this.handleClick()}>Click Here</button>
       </div>
     )
   }

@@ -1,12 +1,14 @@
-import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO } from '../constants/index.js';
+import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO } from '../constants/index';
 
 export function soundOn() {
+  console.log("ACTION: ON");
   return {
     type: SOUND_ON
   }
 }
 
 export function soundOff() {
+  console.log("ACTION: ON");
   return {
     type: SOUND_OFF
   }

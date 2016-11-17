@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import Sound from './reducer_sound';
+import sound from './reducer_sound';
 
 const rootReducer = combineReducers({
-  sound: Sound
+  sound: sound
 });
 
 export default rootReducer;
