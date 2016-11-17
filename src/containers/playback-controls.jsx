@@ -8,7 +8,17 @@ class PlaybackControls extends Component {
 
   render() {
     return (
-      
+
     )
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ soundOn, soundOff }, dispatch);
+}
+
+function mapStateToProps({ playing }) {
+  return { playing };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlaybackControls);
