@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { soundOn, soundOff } from '../actions/index';
 
 class PlaybackControls extends Component {
   constructor(props) {
@@ -27,8 +30,8 @@ class PlaybackControls extends Component {
   render() {
     return (
       <div>
-        <div>{ handleTemp() }</div>
-        <button onClick={handleClick()}>Click Here</button>
+        <div>{ this.handleTemp() }</div>
+        <button onClick={this.handleClick()}>Click Here</button>
       </div>
     )
   }
