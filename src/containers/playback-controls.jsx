@@ -4,15 +4,11 @@ import { connect } from 'react-redux';
 import { soundOn, soundOff } from '../actions/index';
 
 class PlaybackControls extends Component {
-  constructor(props) {
-    super(props);
 
-  }
-
-  handleTemp() {
-    if (this.props.playing) {
+  showText() {
+    if (this.props.sound.playing) {
       return "It's playing!";
-    } else if (!this.props.playing) {
+    } else if (!this.props.sound.playing) {
       return "It's not playing!";
     } else {
       "Uhh..."
@@ -20,14 +16,10 @@ class PlaybackControls extends Component {
   }
 
   handleClick() {
-    console.log(this.props);
-
-    if (this.props.playing) {
+    if (this.props.sound.playing) {
       this.props.soundOff();
-      console.log("SOUND OFF");
-    } else if (!this.props.playing) {
+    } else if (!this.props.sound.playing) {
       this.props.soundOn();
-      console.log("SOUND ON");
     } else {
       console.log("ERROR: HANDLE CLICK NOT WORKING");
     }
@@ -36,7 +28,7 @@ class PlaybackControls extends Component {
   render() {
     return (
       <div>
-        <div>{ this.handleTemp() }</div>
+        <div>{ this.showText() }</div>
         <button onClick={() => this.handleClick()}>Click Here</button>
       </div>
     )
@@ -47,8 +39,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ soundOn, soundOff }, dispatch);
 }
 
-function mapStateToProps({ playing }) {
-  return { playing };
+function mapStateToProps({ sound }) {
+  return { sound };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaybackControls);

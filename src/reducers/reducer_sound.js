@@ -5,14 +5,12 @@ const initialState = {
 }
 
 export default function sound(state = initialState, action) {
-  switch (action.type) {
-    case SOUND_ON:
-      return { playing: true, ...state };
-      console.log("REDUCER: ON");
-    case SOUND_OFF:
-      return { playing: false, ...state };
-      console.log("REDUCER: OFF");
-    default:
-      return state
-  }
+    switch (action.type) {
+        case SOUND_ON:
+            return {...state, playing: true};
+        case SOUND_OFF:
+            return {...state, playing: false};
+        default:
+            return state;
+    }
 }
