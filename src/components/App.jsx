@@ -1,32 +1,20 @@
-import React from 'react';
-import Sound from './modules/sound.jsx';
+import React, { Component } from 'react';
+import PlaybackControls from '../containers/playback-controls.jsx';
+import Slider from '../containers/slider.jsx';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-var App = React.createClass({
-    getInitialState: function () {
-        return {
-            audioContext: null,
-            playing: false,
-            dripRate: 45
-        }
-    },
-    
-    componentDidMount: function () {
-        var ctx = new (window.AudioContext || window.webkitAudioContext)();
-        
-        this.handleAudioContextUpdate(ctx);
-    },
-    
-    handleAudioContextUpdate: function (ctx) {
-        this.setState({
-            audioContext: ctx
-        });
-    },
-    
-    render: function () {
-        return (
-            <Sound audioContext={this.audioContext} dripRate={this.state.dripRate} playing={this.state.playing} />
-        )
-    }
-});
+class App extends Component {
+  render() {
+    return (
+      <MuiThemeProvider>
+        <div>
+          <PlaybackControls />
+          {/*}<Slider />*/}
+        </div>
+      </MuiThemeProvider>
+    )
+  }
+}
 
 export default App;
