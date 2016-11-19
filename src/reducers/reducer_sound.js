@@ -2,13 +2,13 @@ import { SOUND_ON, SOUND_OFF } from '../constants/index';
 
 const initialState = {
     playing: false,
-    osc: null
+    interval: null,
+    tempo: 1000
 }
 
 export default function sound(state = initialState, action) {
     switch (action.type) {
         case SOUND_ON:
-
             function newOscillator() {
                 const osc = action.ctx.createOscillator();
                 const gain = action.ctx.createGain();
@@ -21,13 +21,11 @@ export default function sound(state = initialState, action) {
                 osc.stop(action.ctx.currentTime + 0.15);
             }
 
-            newOscillator();
+            return {...state, playing: true, interval: setInterval(newOscillator, state.tempo)};
 
-            return {...state, playing: true, osc};
         case SOUND_OFF:
-            var osc = state.osc;
-
-            return {...state, playing: false, osc: null};
+            clearInterval(state.interval);
+            return {...state, playing: false};
         default:
             return state;
     }
