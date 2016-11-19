@@ -8,11 +8,11 @@ const initialState = {
 export default function sound(state = initialState, action) {
     switch (action.type) {
         case SOUND_ON:
-            var osc = action.ctx.createOscillator();
+            const osc = action.ctx.createOscillator();
+            const gain = action.ctx.createGain();
 
             osc.type = 'sine';
-            osc.frequency.value = 1080;
-            var gain = action.ctx.createGain();
+            osc.frequency.value = 2000;
             gain.gain.value = 1;
             osc.connect(gain);
             gain.connect(action.ctx.destination);
@@ -20,7 +20,7 @@ export default function sound(state = initialState, action) {
             return {...state, playing: true, osc};
         case SOUND_OFF:
             var osc = state.osc;
-            
+
             osc.stop();
             osc.disconnect();
             return {...state, playing: false, osc: null};
