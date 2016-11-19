@@ -5,17 +5,6 @@ import {soundOn, soundOff} from '../actions/index';
 import PlayButton from '../components/play-button.jsx';
 
 class PlaybackControls extends Component {
-    showText(n) {
-        const {sound} = this.props;
-        if (sound.playing) {
-            return "It's playing!";
-        } else if (!sound.playing) {
-            return "It's not playing!";
-        } else {
-            "Uhh..."
-        }
-    }
-
     handleClick() {
         const {sound, soundOff, soundOn, audioContext} = this.props;
         if (sound.playing) {
@@ -30,7 +19,6 @@ class PlaybackControls extends Component {
     render() {
         return (
             <div>
-                <div>{this.showText()}</div>
                 <PlayButton click={() => this.handleClick()} />
             </div>
         )
