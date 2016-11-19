@@ -12,15 +12,15 @@ export default function sound(state = initialState, action) {
             function newOscillator() {
                 const osc = action.ctx.createOscillator();
                 const gain = action.ctx.createGain();
-                
-                osc.type = 'saw';
+
+                osc.type = 'sine';
                 osc.frequency.value = 2000;
                 gain.gain.value = 1;
                 osc.connect(gain);
                 gain.connect(action.ctx.destination);
                 osc.start();
                 osc.stop(action.ctx.currentTime + 0.15);
-            }
+            };
 
             newOscillator();
 
@@ -29,7 +29,6 @@ export default function sound(state = initialState, action) {
                 playing: true,
                 interval: setInterval(newOscillator, state.tempo)
             };
-
         case SOUND_OFF:
             clearInterval(state.interval);
             return {
@@ -37,7 +36,6 @@ export default function sound(state = initialState, action) {
                 playing: false,
                 interval: null
             };
-
         default:
             return state;
     }
