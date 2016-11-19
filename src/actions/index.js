@@ -1,14 +1,16 @@
 import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO } from '../constants/index';
 
-export function soundOn() {
+export function soundOn(ctx) {
   return {
-    type: SOUND_ON
+    type: SOUND_ON,
+    ctx
   }
 }
 
-export function soundOff() {
+export function soundOff(ctx) {
   return {
-    type: SOUND_OFF
+    type: SOUND_OFF,
+    ctx
   }
 }
 
