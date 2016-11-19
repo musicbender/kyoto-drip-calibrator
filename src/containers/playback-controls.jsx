@@ -3,6 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {soundOn, soundOff} from '../actions/index';
 import PlayButton from '../components/play-button.jsx';
+import '../style/playback-controls.scss';
 
 class PlaybackControls extends Component {
     handleClick() {
@@ -18,7 +19,7 @@ class PlaybackControls extends Component {
 
     render() {
         return (
-            <div>
+            <div className="playback-controls-div">
                 <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
             </div>
         )
