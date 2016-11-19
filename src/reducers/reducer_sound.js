@@ -3,7 +3,7 @@ import { SOUND_ON, SOUND_OFF } from '../constants/index';
 const initialState = {
     playing: false,
     interval: null,
-    tempo: 1000
+    tempo: 1500
 }
 
 export default function sound(state = initialState, action) {
@@ -12,7 +12,8 @@ export default function sound(state = initialState, action) {
             function newOscillator() {
                 const osc = action.ctx.createOscillator();
                 const gain = action.ctx.createGain();
-                osc.type = 'sine';
+                
+                osc.type = 'saw';
                 osc.frequency.value = 2000;
                 gain.gain.value = 1;
                 osc.connect(gain);
@@ -21,11 +22,22 @@ export default function sound(state = initialState, action) {
                 osc.stop(action.ctx.currentTime + 0.15);
             }
 
-            return {...state, playing: true, interval: setInterval(newOscillator, state.tempo)};
+            newOscillator();
+
+            return {
+                ...state,
+                playing: true,
+                interval: setInterval(newOscillator, state.tempo)
+            };
 
         case SOUND_OFF:
             clearInterval(state.interval);
-            return {...state, playing: false};
+            return {
+                ...state,
+                playing: false,
+                interval: null
+            };
+
         default:
             return state;
     }
