@@ -19,7 +19,7 @@ class PlaybackControls extends Component {
     render() {
         return (
             <div>
-                <PlayButton click={() => this.handleClick()} />
+                <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
             </div>
         )
     }
