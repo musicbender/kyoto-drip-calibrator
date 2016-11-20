@@ -17,6 +17,6 @@ export function soundOff(ctx) {
 export function changeTempo(value) {
   return {
     type: CHANGE_TEMPO,
-    value: value
+    value
   }
 }

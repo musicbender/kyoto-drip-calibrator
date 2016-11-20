@@ -1,9 +1,9 @@
-import { SOUND_ON, SOUND_OFF } from '../constants/index';
+import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO } from '../constants/index';
 
 const initialState = {
     playing: false,
     interval: null,
-    tempo: 1500
+    tempo: 40
 }
 
 export default function sound(state = initialState, action) {
@@ -22,12 +22,16 @@ export default function sound(state = initialState, action) {
                 osc.stop(action.ctx.currentTime + 0.15);
             };
 
+            function convertTempo(num) {
+                return 60000 / num;
+            }
+
             newOscillator();
 
             return {
                 ...state,
                 playing: true,
-                interval: setInterval(newOscillator, state.tempo)
+                interval: setInterval(newOscillator, convertTempo(state.tempo))
             };
         case SOUND_OFF:
             clearInterval(state.interval);
@@ -36,6 +40,8 @@ export default function sound(state = initialState, action) {
                 playing: false,
                 interval: null
             };
+        case CHANGE_TEMPO:
+            return { ...state, tempo: action.value };
         default:
             return state;
     }

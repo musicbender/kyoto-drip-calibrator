@@ -14,12 +14,34 @@ const config = {
 }
 
 class TempoSlider extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSlider = this.handleSlider.bind(this)
+  }
+  stopSound() {
+    const {sound, soundOff, audioContext} = this.props;
+    if(sound.playing) {
+      soundOff(audioContext);
+    }
+  }
+
+  handleSlider(e, value) {
+    const {changeTempo} = this.props;
+    changeTempo(value);
+  }
+
   render() {
     return (
       <section className="tempo-slider-section">
         <div className="tempo-slider-div">
           <FontIcon className="material-icons minus">remove</FontIcon>
-          <Slider {...config} className="tempo-slider"/>
+          <Slider
+            {...config}
+            onDragStart={() => this.stopSound()}
+            value={this.props.sound.tempo}
+            onChange={this.handleSlider}
+            className="tempo-slider"/>
           <FontIcon className="material-icons plus">add</FontIcon>
         </div>
       </section>
@@ -29,9 +51,9 @@ class TempoSlider extends Component {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        soundOn,
-        soundOff,
-        changeTempo
+      soundOn,
+      soundOff,
+      changeTempo
     }, dispatch);
 }
 

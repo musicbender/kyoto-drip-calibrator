@@ -13,7 +13,7 @@ class App extends Component {
       <MuiThemeProvider>
         <div className="app-div">
           <PlaybackControls audioContext={ audioContext } />
-          <TempoSlider />
+          <TempoSlider audioContext={ audioContext }/>
         </div>
       </MuiThemeProvider>
     )
