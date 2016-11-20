@@ -10,7 +10,7 @@ export default function sound(state = initialState, action) {
     switch (action.type) {
         case SOUND_ON:
             function newOscillator() {
-                const osc = action.ctx.createOscillator();
+                const osc = state.ctx.createOscillator();
                 const gain = action.ctx.createGain();
 
                 osc.type = 'sine';
