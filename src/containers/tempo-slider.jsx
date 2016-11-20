@@ -3,6 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {soundOn, soundOff, changeTempo} from '../actions/index';
 import Slider from 'material-ui/Slider';
+import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 import '../style/tempo-slider.scss';
 
@@ -35,14 +36,18 @@ class TempoSlider extends Component {
     return (
       <section className="tempo-slider-section">
         <div className="tempo-slider-div">
-          <FontIcon className="material-icons minus">remove</FontIcon>
+          <IconButton className="minus">
+            <FontIcon className="material-icons">remove</FontIcon>
+          </IconButton>
           <Slider
             {...config}
             onDragStart={() => this.stopSound()}
             value={this.props.sound.tempo}
             onChange={this.handleSlider}
             className="tempo-slider"/>
-          <FontIcon className="material-icons plus">add</FontIcon>
+          <IconButton className="plus">
+            <FontIcon className="material-icons">add</FontIcon>
+          </IconButton>
         </div>
       </section>
     )

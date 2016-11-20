@@ -27,8 +27,7 @@
 .minus {
   position: absolute !important;
   display: inline-block;
-  top: 6%;
-  font-size: 2em !important;
+  top: -11%;
 }
 
 .plus {
@@ -37,4 +36,9 @@
 
 .minus {
   left: 0;
+}
+
+.plus .material-icons,
+.minus .material-icons {
+  font-size: 32px !important;
 }
