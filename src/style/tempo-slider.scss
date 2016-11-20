@@ -20,7 +20,15 @@
   left: 50%;
   transform: translate(-50%,-50%);
   display: inline-block;
-  width: calc(100% - 75px);
+  width: calc(100% - 100px);
+}
+
+.tempo-slider > div > div > div:first-child {
+  background-color: rgb(189, 189, 189) !important;
+}
+
+.tempo-slider > div > div > div:nth-child(3) {
+  background-color: $brown500 !important;
 }
 
 .plus,
@@ -31,14 +39,15 @@
 }
 
 .plus {
-  right: 0;
+  right: -2%;
 }
 
 .minus {
-  left: 0;
+  left: -5%;
 }
 
 .plus .material-icons,
 .minus .material-icons {
   font-size: 32px !important;
+  color: $brown500 !important;
 }
