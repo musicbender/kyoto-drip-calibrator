@@ -33,11 +33,17 @@ class TempoSlider extends Component {
     changeTempo(value);
   }
 
-  handleIcon() {
+  handleIcon(a) {
     const {changeTempo, sound} = this.props;
+    const currentTempo = sound.tempo;
 
-    console.log(sound);
-
+    this.stopSound();
+    
+    if (a == "up") {
+      changeTempo(currentTempo + 1);
+    } else {
+      changeTempo(currentTempo - 1);
+    }
 
   }
 
@@ -45,7 +51,7 @@ class TempoSlider extends Component {
     return (
       <section className="tempo-slider-section">
         <div className="tempo-slider-div">
-          <IconButton className="minus" onClick={this.handleIcon}>
+          <IconButton className="minus" onClick={() => this.handleIcon("down")}>
             <FontIcon className="material-icons">remove</FontIcon>
           </IconButton>
           <Slider
@@ -54,7 +60,7 @@ class TempoSlider extends Component {
             value={this.props.sound.tempo}
             onChange={this.handleSlider}
             className="tempo-slider"/>
-          <IconButton className="plus" onClick={this.handleIcon}>
+          <IconButton className="plus" onClick={() => this.handleIcon("up")}>
             <FontIcon className="material-icons">add</FontIcon>
           </IconButton>
         </div>
