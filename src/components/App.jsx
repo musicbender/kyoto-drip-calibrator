@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PlaybackControls from '../containers/playback-controls.jsx';
-import Slider from '../containers/slider.jsx';
+import TempoSlider from '../containers/tempo-slider.jsx';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import '../style/base.scss';
@@ -13,7 +13,7 @@ class App extends Component {
       <MuiThemeProvider>
         <div className="app-div">
           <PlaybackControls audioContext={ audioContext } />
-          {/*}<Slider />*/}
+          <TempoSlider />
         </div>
       </MuiThemeProvider>
     )
