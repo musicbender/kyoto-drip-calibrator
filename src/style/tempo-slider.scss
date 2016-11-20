@@ -1,6 +1,40 @@
 @import './variables';
 
+.tempo-slider-section {
+  position: relative;
+  height: 15em;
+}
+
 .tempo-slider-div {
-  margin: 6.5em auto;
-  max-width: 75%;
+  position: absolute;
+  width: 75%;
+  height: 4em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.tempo-slider {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: inline-block;
+  width: calc(100% - 75px);
+}
+
+.plus,
+.minus {
+  position: absolute !important;
+  display: inline-block;
+  top: 6%;
+  font-size: 2em !important;
+}
+
+.plus {
+  right: 0;
+}
+
+.minus {
+  left: 0;
 }

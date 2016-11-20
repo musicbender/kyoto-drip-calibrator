@@ -24,10 +24,10 @@ class PlaybackControls extends Component {
 
     render() {
         return (
-            <div className="playback-controls-div">
+            <section className="playback-controls-div">
                 <TempoView tempo={this.convertTempo()}/>
                 <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
-            </div>
+            </section>
         )
     }
 }

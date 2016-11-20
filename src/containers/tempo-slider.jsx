@@ -3,8 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {soundOn, soundOff, changeTempo} from '../actions/index';
 import Slider from 'material-ui/Slider';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import ContentRemove from 'material-ui/svg-icons/content/remove';
+import FontIcon from 'material-ui/FontIcon';
 import '../style/tempo-slider.scss';
 
 const config = {
@@ -17,11 +16,13 @@ const config = {
 class TempoSlider extends Component {
   render() {
     return (
-      <div className="tempo-slider-div">
-        <ContentRemove />
-        <Slider {...config}/>
-        <ContentAdd />
-      </div>
+      <section className="tempo-slider-section">
+        <div className="tempo-slider-div">
+          <FontIcon className="material-icons minus">remove</FontIcon>
+          <Slider {...config} className="tempo-slider"/>
+          <FontIcon className="material-icons plus">add</FontIcon>
+        </div>
+      </section>
     )
   }
 }
