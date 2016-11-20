@@ -18,7 +18,8 @@ class TempoSlider extends Component {
   constructor(props) {
     super(props);
 
-    this.handleSlider = this.handleSlider.bind(this)
+    this.handleSlider = this.handleSlider.bind(this);
+    this.handleIcon = this.handleIcon.bind(this);
   }
   stopSound() {
     const {sound, soundOff, audioContext} = this.props;
@@ -32,11 +33,19 @@ class TempoSlider extends Component {
     changeTempo(value);
   }
 
+  handleIcon() {
+    const {changeTempo, sound} = this.props;
+
+    console.log(sound);
+
+
+  }
+
   render() {
     return (
       <section className="tempo-slider-section">
         <div className="tempo-slider-div">
-          <IconButton className="minus">
+          <IconButton className="minus" onClick={this.handleIcon}>
             <FontIcon className="material-icons">remove</FontIcon>
           </IconButton>
           <Slider
@@ -45,7 +54,7 @@ class TempoSlider extends Component {
             value={this.props.sound.tempo}
             onChange={this.handleSlider}
             className="tempo-slider"/>
-          <IconButton className="plus">
+          <IconButton className="plus" onClick={this.handleIcon}>
             <FontIcon className="material-icons">add</FontIcon>
           </IconButton>
         </div>
