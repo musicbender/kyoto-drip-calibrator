@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import PlaybackControls from '../containers/playback-controls.jsx';
 import TempoSlider from '../containers/tempo-slider.jsx';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -9,8 +10,19 @@ const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
 class App extends Component {
   render() {
+
+    const muiTheme = getMuiTheme({
+      slider: {
+        handleSize: 20,
+        selectionColor: this.props.sound.color,
+        handleColorZero: 'rgb(70, 50, 42)',
+        handleFillColor: 'rgb(70, 50, 42)',
+        rippleColor: this.props.sound.color
+      },
+    });
+
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <div className="app-div">
           <PlaybackControls audioContext={ audioContext } />
           <TempoSlider audioContext={ audioContext }/>
@@ -20,4 +32,8 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps({sound}) {
+    return {sound};
+}
+
+export default connect(mapStateToProps)(App);

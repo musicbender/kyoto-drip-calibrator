@@ -51,11 +51,11 @@ export default function sound(state = initialState, action) {
                     red: 0,
                     green: 0,
                     blue: 0
-                }
+                };
                 var percent = {
                     a: ((value - 10) * 100) / (50 - 10),
                     b: ((value - 51) * 100) / (120 - 51)
-                }
+                };
 
                 if (value < 51) {
                     colors.red = parseInt((percent.a * (120 - 70)) / 100) + 70;
@@ -63,20 +63,21 @@ export default function sound(state = initialState, action) {
                     colors.blue = parseInt((percent.a * (73 - 42)) / 100) + 42;
                 } else {
                     colors.red = parseInt((percent.b * (166 - 121)) / 100) + 121;
-                    colors.green = 85;
-                    colors.blue = 72;
+                    colors.green = 86;
+                    colors.blue = 73;
                 }
+
                 let theColor = "rgb(" + colors.red + "," + colors.green + "," + colors.blue + ")";
-                console.log(theColor);
+
                 return (theColor);
             }
 
-            var myColor = getTheColor(action.value);
+            var newColor = getTheColor(action.value);
 
             return {
                 ...state,
                 tempo: action.value,
-                color: myColor
+                color: newColor
             };
         default:
             return state;
