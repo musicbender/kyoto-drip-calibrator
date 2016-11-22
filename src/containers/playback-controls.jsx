@@ -6,6 +6,11 @@ import TempoView from '../components/tempo-view.jsx';
 import PlayButton from '../components/play-button.jsx';
 import '../style/playback-controls.scss';
 
+const ripplePos = {
+  top: 0,
+  right: 0
+}
+
 class PlaybackControls extends Component {
     handleClick() {
         const {sound, soundOff, soundOn, audioContext} = this.props;
@@ -25,7 +30,7 @@ class PlaybackControls extends Component {
 
       return (
           <section className="playback-controls-div" style={styles}>
-              <TempoView tempo={this.props.sound.tempo}/>
+              <TempoView tempo={this.props.sound.tempo} />
               <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
           </section>
       )
