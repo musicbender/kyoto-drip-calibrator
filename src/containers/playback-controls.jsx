@@ -19,12 +19,16 @@ class PlaybackControls extends Component {
     }
 
     render() {
-        return (
-            <section className="playback-controls-div">
-                <TempoView tempo={this.props.sound.tempo}/>
-                <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
-            </section>
-        )
+      const styles = {
+        backgroundColor: this.props.sound.color
+      }
+
+      return (
+          <section className="playback-controls-div" style={styles}>
+              <TempoView tempo={this.props.sound.tempo}/>
+              <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
+          </section>
+      )
     }
 }
 

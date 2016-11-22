@@ -4,7 +4,7 @@ import '../style/tempo-view.scss';
 export default (props) => {
   return (
     <div className="tempo-view-div">
-      {props.tempo} drips per minute
+      <span className="tempo-number">{props.tempo}</span> drips per minute
     </div>
   )
 }

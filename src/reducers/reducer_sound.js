@@ -1,16 +1,21 @@
-import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO } from '../constants/index';
+import {
+    SOUND_ON,
+    SOUND_OFF,
+    CHANGE_TEMPO
+} from '../constants/index';
 
 const initialState = {
     playing: false,
     interval: null,
-    tempo: 40
+    tempo: 40,
+    color: "rgb(121,85,72)"
 }
 
 export default function sound(state = initialState, action) {
     switch (action.type) {
         case SOUND_ON:
             function newOscillator() {
-                const osc = state.ctx.createOscillator();
+                const osc = action.ctx.createOscillator();
                 const gain = action.ctx.createGain();
 
                 osc.type = 'sine';
@@ -41,7 +46,38 @@ export default function sound(state = initialState, action) {
                 interval: null
             };
         case CHANGE_TEMPO:
-            return { ...state, tempo: action.value };
+            function getTheColor(value) {
+                var colors = {
+                    red: 0,
+                    green: 0,
+                    blue: 0
+                }
+                var percent = {
+                    a: ((value - 10) * 100) / (50 - 10),
+                    b: ((value - 51) * 100) / (120 - 51)
+                }
+
+                if (value < 51) {
+                    colors.red = parseInt((percent.a * (120 - 70)) / 100) + 70;
+                    colors.green = parseInt((percent.a * (86 - 50)) / 100) + 50;
+                    colors.blue = parseInt((percent.a * (73 - 42)) / 100) + 42;
+                } else {
+                    colors.red = parseInt((percent.b * (166 - 121)) / 100) + 121;
+                    colors.green = 85;
+                    colors.blue = 72;
+                }
+                let theColor = "rgb(" + colors.red + "," + colors.green + "," + colors.blue + ")";
+                console.log(theColor);
+                return (theColor);
+            }
+
+            var myColor = getTheColor(action.value);
+
+            return {
+                ...state,
+                tempo: action.value,
+                color: myColor
+            };
         default:
             return state;
     }

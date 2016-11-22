@@ -4,6 +4,13 @@
   font-family: $font;
   position: absolute;
   top: 25%;
-  left: 7%;    font-size: 1.5em;
+  left: 7%;
+  font-size: 1.2em;
+  font-weight: 100;
   color: $white;
+}
+
+.tempo-number {
+  font-size: 2.5em;
+  font-weight: 400;
 }
