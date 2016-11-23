@@ -49,14 +49,15 @@ class App extends Component {
         <div className="app-div">
           <AppBar
             title="Slow Drip Coffee Calibrator"
-
             titleStyle={barStyle.title}
             style={barStyle.bar}
             iconStyleLeft={barStyle.iconLeft}
             iconStyleRight={barStyle.iconRight}
             iconElementRight={<DropdownMenu />}
             />
-          <PlaybackControls audioContext={ audioContext } />
+          <PlaybackControls audioContext={ audioContext }>
+
+          </PlaybackControls>
           <TempoSlider audioContext={ audioContext }/>
         </div>
       </MuiThemeProvider>

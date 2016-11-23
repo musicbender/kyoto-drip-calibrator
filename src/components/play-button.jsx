@@ -15,7 +15,7 @@ export default (props) => {
   return (
     <div className="play-button-div">
       <FloatingActionButton onClick={() => props.click()}>
-        { toggleIcon() }
+        {toggleIcon()}
       </FloatingActionButton>
     </div>
   )

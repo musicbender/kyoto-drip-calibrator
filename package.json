@@ -12,9 +12,11 @@
   "author": "Pat",
   "license": "ISC",
   "dependencies": {
+    "element-from-point": "^1.0.0",
     "material-ui": "^0.16.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-ink": "^5.1.1",
     "react-redux": "^4.4.5",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
@@ -31,6 +33,7 @@
     "html-webpack-plugin": "^2.22.0",
     "node-sass": "^3.10.1",
     "sass-loader": "^4.0.2",
+    "simulate": "0.0.5",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1"

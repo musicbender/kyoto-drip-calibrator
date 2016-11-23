@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {soundOn, soundOff} from '../actions/index';
 import TempoView from '../components/tempo-view.jsx';
 import PlayButton from '../components/play-button.jsx';
+import Ink from 'react-ink';
 import '../style/playback-controls.scss';
 
 const ripplePos = {
@@ -29,9 +30,10 @@ class PlaybackControls extends Component {
       }
 
       return (
-          <section className="playback-controls-div" style={styles}>
-              <TempoView tempo={this.props.sound.tempo} />
-              <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
+          <section id="playback-controls" className="playback-controls-div" style={styles}>
+            <Ink />
+            <TempoView tempo={this.props.sound.tempo} />
+            <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
           </section>
       )
     }

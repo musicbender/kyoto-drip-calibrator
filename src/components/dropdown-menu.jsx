@@ -9,7 +9,7 @@ export default (props) => {
     color: "rgba(255, 255, 255, 0.6)"
   }
   const links = {
-    first: "https://www.washingtonpost.com/news/going-out-guide/wp/2015/08/04/kyoto-cold-brew-coffee-is-good-to-the-last-drop-if-youre-patient/"
+    kyoto: "https://www.washingtonpost.com/news/going-out-guide/wp/2015/08/04/kyoto-cold-brew-coffee-is-good-to-the-last-drop-if-youre-patient/"
   }
 
   return (
@@ -18,7 +18,7 @@ export default (props) => {
         vertical: 'top'
     }} anchorOrigin={{horizontal: 'right',vertical: 'top'}}>
         <MenuItem
-          onTouchTap={() => window.open(links.first,"_blank")}
+          onTouchTap={() => window.open(links.kyoto,"_blank")}
           primaryText="What is Slow Drip Coffee?"/>
     </IconMenu>
   )
