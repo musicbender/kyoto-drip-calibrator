@@ -5,6 +5,7 @@ import TempoSlider from '../containers/tempo-slider.jsx';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
+import DropdownMenu from './dropdown-menu.jsx';
 import '../style/base.scss';
 
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -26,7 +27,7 @@ class App extends Component {
         fontSize: 18,
         fontWeight: 100,
         color: "rgba(255, 255, 255, 0.6)",
-        lineHeight: 45
+        lineHeight: '45px'
       },
       bar: {
         backgroundColor: "rgba(70, 50, 42, 0.3)",
@@ -35,7 +36,11 @@ class App extends Component {
       iconLeft: {
         marginTop: 0,
         height: 45,
-        width: 45
+        width: 45,
+        display: "none"
+      },
+      iconRight: {
+        marginTop: 0
       }
     }
 
@@ -43,11 +48,13 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="app-div">
           <AppBar
-            title="Coffee Drip Tower Calibrator"
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
+            title="Slow Drip Coffee Calibrator"
+
             titleStyle={barStyle.title}
             style={barStyle.bar}
             iconStyleLeft={barStyle.iconLeft}
+            iconStyleRight={barStyle.iconRight}
+            iconElementRight={<DropdownMenu />}
             />
           <PlaybackControls audioContext={ audioContext } />
           <TempoSlider audioContext={ audioContext }/>
