@@ -3,7 +3,8 @@ import elementFromPoint from 'element-from-point';
 import {
     SOUND_ON,
     SOUND_OFF,
-    CHANGE_TEMPO
+    CHANGE_TEMPO,
+    TICK
 } from '../constants/index';
 
 
@@ -17,37 +18,22 @@ const initialState = {
 export default function sound(state = initialState, action) {
     switch (action.type) {
         case SOUND_ON:
-            function newOscillator() {
-                const osc = action.ctx.createOscillator();
-                const gain = action.ctx.createGain();
-
-                osc.type = 'sine';
-                osc.frequency.value = 2000;
-                gain.gain.value = 1;
-                osc.connect(gain);
-                gain.connect(action.ctx.destination);
-                osc.start();
-                osc.stop(action.ctx.currentTime + 0.15);
-            };
-
-            function convertTempo(num) {
-                return 60000 / num;
-            }
-
-            newOscillator();
-
             return {
                 ...state,
                 playing: true,
-                interval: setInterval(newOscillator, convertTempo(state.tempo))
+                interval: action.interval
             };
         case SOUND_OFF:
-            clearInterval(state.interval);
             return {
                 ...state,
                 playing: false,
                 interval: null
             };
+        case TICK:
+        return {
+            ...state,
+             elapsed: action.currentTime
+        };
         case CHANGE_TEMPO:
             function getTheColor(value) {
                 var colors = {
