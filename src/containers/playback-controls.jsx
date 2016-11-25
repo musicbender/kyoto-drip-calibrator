@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {soundOn, soundOff} from '../actions/index';
 import TempoView from '../components/tempo-view.jsx';
 import PlayButton from '../components/play-button.jsx';
+import Tick from './tick.jsx';
 import Ink from 'react-ink';
 import '../style/playback-controls.scss';
 
@@ -24,6 +25,13 @@ class PlaybackControls extends Component {
         }
     }
 
+    handleTick() {
+      const {sound, audioContext} = this.props;
+      if (sound.playing) {
+          return <Tick ctx={audioContext} tempo={sound.tempo}/>;
+      }
+    }
+
     render() {
       const styles = {
         backgroundColor: this.props.sound.color
@@ -34,6 +42,7 @@ class PlaybackControls extends Component {
             <Ink />
             <TempoView tempo={this.props.sound.tempo} />
             <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
+            {this.handleTick()}
           </section>
       )
     }

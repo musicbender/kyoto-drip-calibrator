@@ -1,4 +1,4 @@
-import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO, TICK } from '../constants/index';
+import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO } from '../constants/index';
 
 export function soundOn(ctx) {
   return {
@@ -12,13 +12,6 @@ export function soundOff(ctx) {
   return {
     type: SOUND_OFF,
     ctx
-  }
-}
-
-export function tickOn() {
-  return {
-    type: TICK,
-    currentTime: 0
   }
 }
 

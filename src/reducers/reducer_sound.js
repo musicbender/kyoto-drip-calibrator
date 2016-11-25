@@ -3,14 +3,12 @@ import elementFromPoint from 'element-from-point';
 import {
     SOUND_ON,
     SOUND_OFF,
-    CHANGE_TEMPO,
-    TICK
+    CHANGE_TEMPO
 } from '../constants/index';
 
 
 const initialState = {
     playing: false,
-    interval: null,
     tempo: 40,
     color: "rgb(121,85,72)"
 }
@@ -20,20 +18,13 @@ export default function sound(state = initialState, action) {
         case SOUND_ON:
             return {
                 ...state,
-                playing: true,
-                interval: action.interval
+                playing: true
             };
         case SOUND_OFF:
             return {
                 ...state,
-                playing: false,
-                interval: null
+                playing: false
             };
-        case TICK:
-        return {
-            ...state,
-             elapsed: action.currentTime
-        };
         case CHANGE_TEMPO:
             function getTheColor(value) {
                 var colors = {
