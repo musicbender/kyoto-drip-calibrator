@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import elementFromPoint from 'element-from-point';
+
 
 class Tick extends Component {
   constructor(props) {
@@ -20,6 +20,7 @@ class Tick extends Component {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
+
     osc.type = 'sine';
     osc.frequency.value = 2000;
     gain.gain.value = 1;
@@ -27,10 +28,13 @@ class Tick extends Component {
     gain.connect(ctx.destination);
     osc.start();
     osc.stop(ctx.currentTime + 0.15);
-    document.addEventListener("mousedown", function(ev) {
-    var el = elementFromPoint(ev.clientX, ev.clientY);
-})
-  };
+
+    this.handleRipple();
+  }
+
+  handleRipple() {
+    this.props.changeRipple();
+  }
 
   convertTempo(num) {
     return 60000 / num;
@@ -40,5 +44,6 @@ class Tick extends Component {
     return <div></div>
   }
 }
+
 
 export default Tick;

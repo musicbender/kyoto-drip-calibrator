@@ -3,14 +3,16 @@ import elementFromPoint from 'element-from-point';
 import {
     SOUND_ON,
     SOUND_OFF,
-    CHANGE_TEMPO
+    CHANGE_TEMPO,
+    CHANGE_RIPPLE
 } from '../constants/index';
 
 
 const initialState = {
     playing: false,
     tempo: 40,
-    color: "rgb(121,85,72)"
+    color: "rgb(121,85,72)",
+    ripple: 1
 }
 
 export default function sound(state = initialState, action) {
@@ -59,6 +61,16 @@ export default function sound(state = initialState, action) {
                 tempo: action.value,
                 color: newColor
             };
+
+        case CHANGE_RIPPLE:
+            var newNum;
+            if (state.ripple === 1) {
+                newNum = 2;
+            } else if (state.ripple === 2) {
+                newNum = 1;
+            }
+
+            return { ...state, ripple: newNum };
         default:
             return state;
     }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {soundOn, soundOff} from '../actions/index';
+import {soundOn, soundOff, changeRipple} from '../actions/index';
 import TempoView from '../components/tempo-view.jsx';
 import PlayButton from '../components/play-button.jsx';
 import Tick from './tick.jsx';
@@ -28,7 +28,10 @@ class PlaybackControls extends Component {
     handleTick() {
       const {sound, audioContext} = this.props;
       if (sound.playing) {
-          return <Tick ctx={audioContext} tempo={sound.tempo} />;
+          return <Tick
+            ctx={audioContext}
+            tempo={sound.tempo}
+            changeRipple={this.props.changeRipple} />;
       }
     }
 
@@ -41,7 +44,7 @@ class PlaybackControls extends Component {
           <section id="playback-controls" className="playback-controls-div" style={styles}>
             <TempoView tempo={this.props.sound.tempo} />
             <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
-            <Ripple />
+            <Ripple rippleState="{this.props.sound.ripple}"/>
             {this.handleTick()}
           </section>
       )
@@ -51,7 +54,8 @@ class PlaybackControls extends Component {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         soundOn,
-        soundOff
+        soundOff,
+        changeRipple
     }, dispatch);
 }
 

@@ -1,4 +1,4 @@
-import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO } from '../constants/index';
+import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO, CHANGE_RIPPLE } from '../constants/index';
 
 export function soundOn(ctx) {
   return {
@@ -19,5 +19,11 @@ export function changeTempo(value) {
   return {
     type: CHANGE_TEMPO,
     value
+  }
+}
+
+export function changeRipple() {
+  return {
+    type: CHANGE_RIPPLE
   }
 }
