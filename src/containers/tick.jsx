@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import elementFromPoint from 'element-from-point';
 
 class Tick extends Component {
   constructor(props) {
@@ -6,7 +7,7 @@ class Tick extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
+    this.newOscillator();
     this.interval = setInterval(()=>this.newOscillator(), this.convertTempo(this.props.tempo));
   }
 
@@ -16,25 +17,27 @@ class Tick extends Component {
 
   newOscillator() {
     const ctx = this.props.ctx;
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
 
-      osc.type = 'sine';
-      osc.frequency.value = 2000;
-      gain.gain.value = 1;
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.15);
+    osc.type = 'sine';
+    osc.frequency.value = 2000;
+    gain.gain.value = 1;
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.15);
+    document.addEventListener("mousedown", function(ev) {
+    var el = elementFromPoint(ev.clientX, ev.clientY);
+})
   };
 
   convertTempo(num) {
-      return 60000 / num;
+    return 60000 / num;
   }
 
   render() {
     return <div></div>
-
   }
 }
 

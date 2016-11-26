@@ -5,7 +5,7 @@ import {soundOn, soundOff} from '../actions/index';
 import TempoView from '../components/tempo-view.jsx';
 import PlayButton from '../components/play-button.jsx';
 import Tick from './tick.jsx';
-import Ink from 'react-ink';
+import Ripple from '../components/ripple.jsx';
 import '../style/playback-controls.scss';
 
 const ripplePos = {
@@ -28,7 +28,7 @@ class PlaybackControls extends Component {
     handleTick() {
       const {sound, audioContext} = this.props;
       if (sound.playing) {
-          return <Tick ctx={audioContext} tempo={sound.tempo}/>;
+          return <Tick ctx={audioContext} tempo={sound.tempo} />;
       }
     }
 
@@ -39,9 +39,9 @@ class PlaybackControls extends Component {
 
       return (
           <section id="playback-controls" className="playback-controls-div" style={styles}>
-            <Ink />
             <TempoView tempo={this.props.sound.tempo} />
             <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
+            <Ripple />
             {this.handleTick()}
           </section>
       )

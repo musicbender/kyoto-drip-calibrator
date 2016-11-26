@@ -63,7 +63,7 @@ class TempoSlider extends Component {
             value={this.props.sound.tempo}
             onChange={this.handleSlider}
             className="tempo-slider"/>
-          <IconButton className="plus" id="plus-btn" onClick={() => this.handleIcon("up")} iconStyle={iconColor}>
+          <IconButton className="plus" ref="plus" onClick={() => this.handleIcon("up")} iconStyle={iconColor}>
             <FontIcon className="material-icons">add</FontIcon>
           </IconButton>
         </div>
