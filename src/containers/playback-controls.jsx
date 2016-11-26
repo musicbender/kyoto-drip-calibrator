@@ -44,7 +44,7 @@ class PlaybackControls extends Component {
           <section id="playback-controls" className="playback-controls-div" style={styles}>
             <TempoView tempo={this.props.sound.tempo} />
             <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
-            <Ripple rippleState="{this.props.sound.ripple}"/>
+            <Ripple rippleState={this.props.sound.ripple}/>
             {this.handleTick()}
           </section>
       )
