@@ -8,11 +8,6 @@ import Tick from './tick.jsx';
 import Ripple from '../components/ripple.jsx';
 import '../style/playback-controls.scss';
 
-const ripplePos = {
-  top: 0,
-  right: 0
-}
-
 class PlaybackControls extends Component {
     handleClick() {
         const {sound, soundOff, soundOn, audioContext} = this.props;
@@ -20,32 +15,29 @@ class PlaybackControls extends Component {
             soundOff(audioContext);
         } else if (!sound.playing) {
             soundOn(audioContext);
-        } else {
-            console.log("ERROR: HANDLE CLICK NOT WORKING");
         }
     }
 
-    handleTick() {
+    renderTick() {
       const {sound, audioContext} = this.props;
       if (sound.playing) {
-          return <Tick
+          return (
+            <Tick
             ctx={audioContext}
             tempo={sound.tempo}
-            changeRipple={this.props.changeRipple} />;
+            changeRipple={this.props.changeRipple} />
+        )
       }
     }
 
     render() {
-      const styles = {
-        backgroundColor: this.props.sound.color
-      }
-
+      const styles = { backgroundColor: this.props.sound.color }
       return (
           <section id="playback-controls" className="playback-controls-div" style={styles}>
             <TempoView tempo={this.props.sound.tempo} />
             <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
             <Ripple rippleState={this.props.sound.ripple}/>
-            {this.handleTick()}
+            {this.renderTick()}
           </section>
       )
     }

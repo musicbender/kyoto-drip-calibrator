@@ -48,9 +48,7 @@ export default function sound(state = initialState, action) {
                     colors.green = 86;
                     colors.blue = 73;
                 }
-
                 let theColor = "rgb(" + colors.red + "," + colors.green + "," + colors.blue + ")";
-
                 return (theColor);
             }
 
@@ -69,8 +67,8 @@ export default function sound(state = initialState, action) {
             } else if (state.ripple === 2) {
                 newNum = 1;
             }
-
             return { ...state, ripple: newNum };
+
         default:
             return state;
     }
