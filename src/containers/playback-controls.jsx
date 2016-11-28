@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {soundOn, soundOff, changeRipple} from '../actions/index';
 import TempoView from '../components/tempo-view.jsx';
 import PlayButton from '../components/play-button.jsx';
-import Tick from './tick.jsx';
+import Tick from '../components/tick.jsx';
 import Ripple from '../components/ripple.jsx';
 import '../style/playback-controls.scss';
 

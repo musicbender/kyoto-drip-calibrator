@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-
 class Tick extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +18,6 @@ class Tick extends Component {
     const ctx = this.props.ctx;
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
-
 
     osc.type = 'sine';
     osc.frequency.value = 2000;
@@ -44,6 +42,5 @@ class Tick extends Component {
     return <div></div>
   }
 }
-
 
 export default Tick;

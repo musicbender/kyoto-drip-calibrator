@@ -55,10 +55,8 @@ class App extends Component {
             iconStyleRight={barStyle.iconRight}
             iconElementRight={<DropdownMenu />}
             />
-          <PlaybackControls audioContext={ audioContext }>
-
-          </PlaybackControls>
-          <TempoSlider audioContext={ audioContext }/>
+          <PlaybackControls audioContext={ audioContext } />
+          <TempoSlider audioContext={ audioContext } />
         </div>
       </MuiThemeProvider>
     )
