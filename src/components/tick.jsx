@@ -26,7 +26,6 @@ class Tick extends Component {
     gain.connect(ctx.destination);
     osc.start();
     osc.stop(ctx.currentTime + 0.003);
-
     this.handleRipple();
   }
 

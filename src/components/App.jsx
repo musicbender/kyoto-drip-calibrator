@@ -6,6 +6,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import DropdownMenu from './dropdown-menu.jsx';
+import barStyle from '../style/bar-style';
 import '../style/base.scss';
 
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -21,28 +22,6 @@ class App extends Component {
         rippleColor: this.props.speed.color
       }
     });
-    const barStyle = {
-      title: {
-        textAlign: "left",
-        fontSize: 18,
-        fontWeight: 100,
-        color: "rgba(255, 255, 255, 0.6)",
-        lineHeight: '45px'
-      },
-      bar: {
-        backgroundColor: "rgba(70, 50, 42, 0.3)",
-        height: 45
-      },
-      iconLeft: {
-        marginTop: 0,
-        height: 45,
-        width: 45,
-        display: "none"
-      },
-      iconRight: {
-        marginTop: 0
-      }
-    }
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
