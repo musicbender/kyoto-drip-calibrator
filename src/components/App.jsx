@@ -15,10 +15,10 @@ class App extends Component {
     const muiTheme = getMuiTheme({
       slider: {
         handleSize: 20,
-        selectionColor: this.props.sound.color,
+        selectionColor: this.props.speed.color,
         handleColorZero: 'rgb(70, 50, 42)',
         handleFillColor: 'rgb(70, 50, 42)',
-        rippleColor: this.props.sound.color
+        rippleColor: this.props.speed.color
       }
     });
     const barStyle = {
@@ -63,8 +63,8 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({sound}) {
-    return {sound};
+function mapStateToProps({speed}) {
+    return {speed};
 }
 
 export default connect(mapStateToProps)(App);

@@ -3,7 +3,6 @@ import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO, CHANGE_RIPPLE } from '../constants/i
 export function soundOn(ctx) {
   return {
     type: SOUND_ON,
-    interval: null,
     ctx
   }
 }

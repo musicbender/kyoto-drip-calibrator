@@ -34,8 +34,8 @@ class TempoSlider extends Component {
   }
 
   handleIcon(a) {
-    const {changeTempo, sound} = this.props;
-    const currentTempo = sound.tempo;
+    const {changeTempo, speed} = this.props;
+    const currentTempo = speed.tempo;
 
     this.stopSound();
 
@@ -44,12 +44,11 @@ class TempoSlider extends Component {
     } else {
       changeTempo(currentTempo - 1);
     }
-
   }
 
   render() {
-    var bgColor = {backgroundColor: this.props.sound.color};
-    var iconColor = {color: this.props.sound.color};
+    var bgColor = {backgroundColor: this.props.speed.color};
+    var iconColor = {color: this.props.speed.color};
 
     return (
       <section className="tempo-slider-section">
@@ -60,7 +59,7 @@ class TempoSlider extends Component {
           <Slider
             {...config}
             onDragStart={() => this.stopSound()}
-            value={this.props.sound.tempo}
+            value={this.props.speed.tempo}
             onChange={this.handleSlider}
             className="tempo-slider"/>
           <IconButton className="plus" ref="plus" onClick={() => this.handleIcon("up")} iconStyle={iconColor}>
@@ -80,8 +79,8 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-function mapStateToProps({sound}) {
-    return {sound};
+function mapStateToProps({sound, speed}) {
+    return {sound, speed};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TempoSlider);

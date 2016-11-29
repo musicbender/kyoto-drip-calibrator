@@ -19,24 +19,24 @@ class PlaybackControls extends Component {
     }
 
     renderTick() {
-      const {sound, audioContext} = this.props;
+      const {sound, speed, audioContext} = this.props;
       if (sound.playing) {
           return (
             <Tick
             ctx={audioContext}
-            tempo={sound.tempo}
+            tempo={speed.tempo}
             changeRipple={this.props.changeRipple} />
         )
       }
     }
 
     render() {
-      const styles = { backgroundColor: this.props.sound.color }
+      const styles = { backgroundColor: this.props.speed.color }
       return (
           <section id="playback-controls" className="playback-controls-div" style={styles}>
-            <TempoView tempo={this.props.sound.tempo} />
+            <TempoView tempo={this.props.speed.tempo} />
             <PlayButton playing={this.props.sound.playing} click={() => this.handleClick()} />
-            <Ripple rippleState={this.props.sound.ripple}/>
+            <Ripple rippleState={this.props.speed.ripple}/>
             {this.renderTick()}
           </section>
       )
@@ -51,8 +51,8 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-function mapStateToProps({sound}) {
-    return {sound};
+function mapStateToProps({sound, speed}) {
+    return {sound, speed};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaybackControls);
