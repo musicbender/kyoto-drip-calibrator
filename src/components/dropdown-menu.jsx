@@ -27,14 +27,14 @@ export default (props) => {
   }
 
   return (
-    <IconMenu onItemTouchTap={(e) => e.preventDefault()}
-      iconButtonElement={<IconButton iconStyle={style}><MoreVertIcon/></IconButton>} targetOrigin={{
-        horizontal: 'right',
-        vertical: 'bottom'
-    }} anchorOrigin={{horizontal: 'right',vertical: 'top'}}>
+    <IconMenu touchTapCloseDelay={0}
+      iconButtonElement=
+      {<IconButton iconStyle={style}><MoreVertIcon/></IconButton>}
+          targetOrigin={{horizontal: 'right',vertical: 'bottom'}}
+          anchorOrigin={{horizontal: 'right',vertical: 'top'}}>
         <MenuItem
           onTouchTap={() => window.open(links.kyoto,"_blank")}
-          primaryText="What is Slow Drip Coffee?" />
+          primaryText="What is Cold Drip Coffee?" />
         <MenuItem
           primaryText={
             <Toggle
