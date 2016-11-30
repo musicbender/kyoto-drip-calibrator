@@ -16,8 +16,19 @@ export default (props) => {
     kyoto: "https://www.washingtonpost.com/news/going-out-guide/wp/2015/08/04/kyoto-cold-brew-coffee-is-good-to-the-last-drop-if-youre-patient/"
   }
 
+  const handleToggle = () => {
+    const range = props.range.range;
+
+    if (range) {
+      props.offRange();
+    } else if (!range) {
+      props.onRange();
+    }
+  }
+
   return (
-    <IconMenu iconButtonElement={<IconButton iconStyle={style}><MoreVertIcon/></IconButton>} targetOrigin={{
+    <IconMenu onItemTouchTap={(e) => e.preventDefault()}
+      iconButtonElement={<IconButton iconStyle={style}><MoreVertIcon/></IconButton>} targetOrigin={{
         horizontal: 'right',
         vertical: 'bottom'
     }} anchorOrigin={{horizontal: 'right',vertical: 'top'}}>
@@ -25,10 +36,15 @@ export default (props) => {
           onTouchTap={() => window.open(links.kyoto,"_blank")}
           primaryText="What is Slow Drip Coffee?" />
         <MenuItem
-          primaryText={<Toggle
+          primaryText={
+            <Toggle
             className="range-toggle"
             label="Recomended Range"
-            style={style.toggle}/>} />
+            style={style.toggle}
+            toggled={props.range.range}
+            onToggle={() => handleToggle()}
+             />
+        } />
 
     </IconMenu>
   )

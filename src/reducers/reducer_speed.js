@@ -1,4 +1,3 @@
-import elementFromPoint from 'element-from-point';
 import {
     CHANGE_TEMPO,
     CHANGE_RIPPLE

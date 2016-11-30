@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {onRange, offRange} from '../actions/index';
 import PlaybackControls from '../containers/playback-controls.jsx';
 import TempoSlider from '../containers/tempo-slider.jsx';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -32,8 +34,9 @@ class App extends Component {
             style={barStyle.bar}
             iconStyleLeft={barStyle.iconLeft}
             iconStyleRight={barStyle.iconRight}
-            iconElementRight={<DropdownMenu range={this.props.range}/>}
-            />
+            iconElementRight={
+              <DropdownMenu range={this.props.range} onRange={this.props.onRange} offRange={this.props.offRange}/>
+            } />
           <PlaybackControls audioContext={ audioContext } />
           <TempoSlider audioContext={ audioContext } />
         </div>
@@ -42,8 +45,15 @@ class App extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        onRange,
+        offRange
+    }, dispatch);
+}
+
 function mapStateToProps({speed, range}) {
     return {speed, range};
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,4 +1,3 @@
-import elementFromPoint from 'element-from-point';
 import {
     SOUND_ON,
     SOUND_OFF,
