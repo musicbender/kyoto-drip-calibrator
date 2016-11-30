@@ -32,7 +32,7 @@ class App extends Component {
             style={barStyle.bar}
             iconStyleLeft={barStyle.iconLeft}
             iconStyleRight={barStyle.iconRight}
-            iconElementRight={<DropdownMenu />}
+            iconElementRight={<DropdownMenu range={this.props.range}/>}
             />
           <PlaybackControls audioContext={ audioContext } />
           <TempoSlider audioContext={ audioContext } />
@@ -42,8 +42,8 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({speed}) {
-    return {speed};
+function mapStateToProps({speed, range}) {
+    return {speed, range};
 }
 
 export default connect(mapStateToProps)(App);

@@ -1,4 +1,4 @@
-import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO, CHANGE_RIPPLE } from '../constants/index';
+import { SOUND_ON, SOUND_OFF, CHANGE_TEMPO, CHANGE_RIPPLE, RANGE_ON, RANGE_OFF } from '../constants/index';
 
 export function soundOn(ctx) {
   return {
@@ -24,5 +24,17 @@ export function changeTempo(value) {
 export function changeRipple() {
   return {
     type: CHANGE_RIPPLE
+  }
+}
+
+export function onRange() {
+  return {
+    type: RANGE_ON
+  }
+}
+
+export function offRange() {
+  return {
+    type: RANGE_OFF
   }
 }
