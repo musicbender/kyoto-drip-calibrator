@@ -5,17 +5,12 @@ import AVPause from 'material-ui/svg-icons/AV/pause';
 import '../style/play-button.scss';
 
 export default (props) => {
-  const toggleIcon = () => {
-    if (props.playing) {
-      return <AVPause />
-    } else {
-      return <AVPlayArrow />
-    }
-  }
+  let playStateIcon = props.playing ? <AVPause /> : <AVPlayArrow />;
+
   return (
     <div className="play-button-div">
       <FloatingActionButton onClick={() => props.click()}>
-        {toggleIcon()}
+        {playStateIcon}
       </FloatingActionButton>
     </div>
   )

@@ -2,18 +2,7 @@ import React from 'react';
 import '../style/ripple.scss';
 
 export default (props) => {
-    var rippleClass;
-    if (props.rippleState === 1) {
-        rippleClass = {
-            one: 'ripple-1',
-            two: 'ripple-hide'
-        }
-    } else if (props.rippleState === 2) {
-        rippleClass = {
-            one: 'ripple-hide',
-            two: 'ripple-2'
-        }
-    }
+    let rippleClass = (props.rippleState === 1) ? {one: 'ripple-1', two: 'ripple-hide'} : {one: 'ripple-hide', two: 'ripple-2'};
 
     return (
       <div className="ripple-container">

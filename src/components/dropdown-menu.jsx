@@ -29,23 +29,22 @@ export default (props) => {
     <IconMenu touchTapCloseDelay={0}
       iconButtonElement=
       {<IconButton iconStyle={style}><MoreVertIcon/></IconButton>}
-          targetOrigin={{horizontal: 'right',vertical: 'bottom'}}
+          targetOrigin={{horizontal: 'right',vertical: 'top'}}
           anchorOrigin={{horizontal: 'right',vertical: 'top'}}>
         <MenuItem
           onTouchTap={() => window.open(links.kyoto,"_blank")}
           primaryText="What is Cold Drip Coffee?" />
         <MenuItem
-          disableTouchRipple ="true"
+          disableTouchRipple
           primaryText={
             <Toggle
             className="range-toggle"
-            label="Recomended Range"
+            label="Sweet Spot"
             style={style.toggle}
             toggled={props.range.range}
             onToggle={() => handleToggle()}
              />
         } />
-
     </IconMenu>
   )
 };
