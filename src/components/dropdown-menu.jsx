@@ -18,7 +18,6 @@ export default (props) => {
 
   const handleToggle = () => {
     const range = props.range.range;
-
     if (range) {
       props.offRange();
     } else if (!range) {

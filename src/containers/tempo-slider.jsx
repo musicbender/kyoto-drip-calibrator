@@ -5,6 +5,7 @@ import {soundOn, soundOff, changeTempo} from '../actions/index';
 import Slider from 'material-ui/Slider';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
+import RangeBox from '../components/range-box.jsx';
 import '../style/tempo-slider.scss';
 
 const config = {
@@ -65,6 +66,7 @@ class TempoSlider extends Component {
           <IconButton className="plus" ref="plus" onClick={() => this.handleIcon("up")} iconStyle={iconColor}>
             <FontIcon className="material-icons">add</FontIcon>
           </IconButton>
+          <RangeBox range={this.props.range} />
         </div>
       </section>
     )
@@ -79,8 +81,8 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-function mapStateToProps({sound, speed}) {
-    return {sound, speed};
+function mapStateToProps({sound, speed, range}) {
+    return {sound, speed, range};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TempoSlider);

@@ -1,0 +1,35 @@
+@import './variables';
+
+#range {
+  display: block;
+  position: absolute;
+  top: -17%;
+  left: 22%;
+  width: 9em;
+  height: 4em;
+  background-color: rgba(0, 188, 212, 0.2);
+  border-radius: 50px;
+  -webkit-transition: 0.5s;
+  transition: 0.2s;
+  z-index: -1;
+}
+
+.range-show {
+  opacity: 1;
+  animation: open-range 0.15s ease-in;
+}
+
+.range-hide {
+  opacity: 0;
+  animation: close-range 0.15s ease-in;
+}
+
+@keyframes open-range {
+  from {transform: scale(0);}
+  to {transform: scale(1);}
+}
+
+@keyframes close-range {
+  from {transform: scale(1);}
+  to {transform: scale(0);}
+}
