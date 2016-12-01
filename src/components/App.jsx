@@ -29,7 +29,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="app-div">
           <AppBar
-            title="Slow Drip Coffee Calibrator"
+            title="Cold Drip Coffee Timer"
             titleStyle={barStyle.title}
             style={barStyle.bar}
             iconStyleLeft={barStyle.iconLeft}

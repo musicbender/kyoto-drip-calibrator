@@ -35,6 +35,7 @@ export default (props) => {
           onTouchTap={() => window.open(links.kyoto,"_blank")}
           primaryText="What is Cold Drip Coffee?" />
         <MenuItem
+          disableTouchRipple ="true"
           primaryText={
             <Toggle
             className="range-toggle"

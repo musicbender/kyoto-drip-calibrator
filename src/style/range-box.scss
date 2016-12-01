@@ -3,12 +3,11 @@
 #range {
   display: block;
   position: absolute;
-  top: -17%;
+  top: -7%;
   left: 22%;
   width: 9em;
-  height: 4em;
+  height: 3em;
   background-color: rgba(0, 188, 212, 0.2);
-  border-radius: 50px;
   -webkit-transition: 0.5s;
   transition: 0.2s;
   z-index: -1;
@@ -32,4 +31,21 @@
 @keyframes close-range {
   from {transform: scale(1);}
   to {transform: scale(0);}
+}
+
+
+/*******MEDIA QUERIES*******/
+
+@media only screen and (max-width: 450px) {
+  #range {
+    left: 25%;
+    width: 21%;
+  }
+}
+
+@media only screen and (max-width: 385px) {
+  #range {
+    left: 27%;
+    width: 19%;
+  }
 }
