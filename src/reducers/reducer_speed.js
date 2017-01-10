@@ -1,13 +1,10 @@
-import {
-    CHANGE_TEMPO,
-    CHANGE_RIPPLE
-} from '../constants/index';
+import { CHANGE_TEMPO, CHANGE_RIPPLE } from '../constants/index';
 
 
 const initialState = {
     tempo: 40,
     color: "rgb(121,85,72)",
-    ripple: 1
+    ripple: 0
 }
 
 export default function speed(state = initialState, action) {
@@ -49,7 +46,9 @@ export default function speed(state = initialState, action) {
             var newNum;
             if (state.ripple === 1) {
                 newNum = 2;
-            } else if (state.ripple === 2) {
+            } else if (state.ripple === 2 || state.ripple === 0) {
+                newNum = 3;
+            } else if (state.ripple === 3) {
                 newNum = 1;
             }
             return { ...state, ripple: newNum };
