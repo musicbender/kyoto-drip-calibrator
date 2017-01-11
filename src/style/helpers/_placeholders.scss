@@ -1,0 +1,14 @@
+%ripple {
+  position: absolute;
+  opacity: 0;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background: rgba(255,255,255,0.4);
+}
+
+%ripple-animate {
+  -webkit-animation: ripple-animation 1.25s;
+  animation: ripple-animation 1.25s;
+  animation-timing-function: ease-out;
+}

@@ -18,14 +18,15 @@ class Tick extends Component {
     const ctx = this.props.ctx;
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
+    const delay = 0.1;
 
     osc.type = 'sine';
     osc.frequency.value = 2000;
     gain.gain.value = 1;
     osc.connect(gain);
     gain.connect(ctx.destination);
-    osc.start();
-    osc.stop(ctx.currentTime + 0.003);
+    osc.start(ctx.currentTime + delay);
+    osc.stop(ctx.currentTime + (delay + 0.003));
     this.handleRipple();
   }
 
