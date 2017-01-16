@@ -5,6 +5,11 @@ import { createStore } from 'redux';
 import App from './components/App.jsx';
 import reducers from './reducers';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import runtime from 'serviceworker-webpack-plugin/lib/runtime';
+
+if ('serviceWorker' in navigator) {
+  const registration = runtime.register();
+}
 
 injectTapEventPlugin();
 

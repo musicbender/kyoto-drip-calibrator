@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
 const PATHS = {
     src: './src/index.jsx',
@@ -23,6 +24,10 @@ const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
     prefix: 'manifest/'
 });
 
+const ServiceWorkerWebpackPluginConfig = new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, 'src/sw.js')
+});
+
 var config = {
     entry: [
         PATHS.src
@@ -40,7 +45,8 @@ var config = {
     },
     plugins: [
       FaviconsWebpackPluginConfig,
-      HtmlWebpackPluginConfig
+      HtmlWebpackPluginConfig,
+      ServiceWorkerWebpackPluginConfig
     ],
     watch: true
 }
