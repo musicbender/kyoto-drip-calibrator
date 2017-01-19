@@ -3,6 +3,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 const PATHS = {
     src: './src/index.jsx',
@@ -21,12 +23,22 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
     logo: PATHS.images + 'favicon.png',
     title: 'Cold Drip Timer',
-    prefix: 'manifest/'
+    prefix: 'assets/',
+    statsFilename: 'icon-stats.json'
 });
 
 const ServiceWorkerWebpackPluginConfig = new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, 'src/sw.js')
+    entry: path.join(__dirname, 'src/sw.js'),
+    excludes: [
+    '**/.*',
+    '**/*.map',
+    '*.html'
+    ]
 });
+
+const CopyWebpackPluginConfig = new CopyWebpackPlugin([
+  {from: 'src/manifest.json', to: 'manifest.json'}
+]);
 
 var config = {
     entry: [
@@ -46,7 +58,8 @@ var config = {
     plugins: [
       FaviconsWebpackPluginConfig,
       HtmlWebpackPluginConfig,
-      ServiceWorkerWebpackPluginConfig
+      ServiceWorkerWebpackPluginConfig,
+      CopyWebpackPluginConfig
     ],
     watch: true
 }
